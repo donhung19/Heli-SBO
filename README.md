@@ -9,12 +9,14 @@
 * **Cruise Optimization**: Automatically identify the optimal cruise velocity ($V_{opt}$) for any aircraft configuration.
 * **Sensitivity Analysis**: Interactive visualization of how aircraft weight, air density, and rotor geometry impact total drag.
 
+
 ## 🛠 Tech Stack
 
 * **Language**: Python 3.13+
 * **ML & Analytics**: Scikit-learn (Polynomial Regression, Pipelines), Pandas, NumPy.
 * **Sampling**: SciPy (Latin Hypercube Sampling for optimal design space coverage).
 * **UI/Deployment**: Streamlit Dashboard for real-time interaction.
+
 
 ## 🚀 Key Features
 
@@ -37,8 +39,9 @@
 ### 5. Robust Persistence Layer
 * **Automated Training Workflow:** Features a smart logic that detects missing models, auto-trains on the fly, and persists the entire pipeline (scaler + poly + regressor) using `joblib`.
 
+
 ## 📂 Project Structure
-```text
+
 Heli-SBO/
 ├── app.py                # Streamlit Web Application
 ├── main.py               # CLI entry point for training and validation
@@ -48,7 +51,7 @@ Heli-SBO/
     ├── surrogate_model.py  # ML training and optimization logic
     ├── create_dataset.py   # LHS sampling and dataset generation
     └── visualization.py    # Plotting and graph generation
-```text
+
 
 ## 🚀 Quick Start
 
