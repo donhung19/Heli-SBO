@@ -41,7 +41,7 @@
 
 
 ## 📂 Project Structure
-
+```text
 Heli-SBO/
 ├── app.py                # Streamlit Web Application
 ├── main.py               # CLI entry point for training and validation
@@ -51,6 +51,7 @@ Heli-SBO/
     ├── surrogate_model.py  # ML training and optimization logic
     ├── create_dataset.py   # LHS sampling and dataset generation
     └── visualization.py    # Plotting and graph generation
+```
 
 
 ## 🚀 Quick Start
@@ -63,6 +64,7 @@ Heli-SBO/
     ```bash
     streamlit run app.py
     ```
+
 
 ## 📊 Performance Summary
 
