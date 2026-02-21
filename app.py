@@ -3,13 +3,11 @@ import pandas as pd
 import os
 import matplotlib.pyplot as plt
 
-# Import các thành phần từ project của bạn
 from src.physic_model import Helicopter
 from src.surrogate_model import SurrogateModel, SurrogateOptimizer
 from src.visualization import DataVisualization
 from src.create_dataset import Sample, Dataset
 
-# Cấu hình không gian thiết kế (Design Space)
 design_space = {
     "rho": [1.1, 1.125],
     "f_factor": [0.2, 1.5],
@@ -19,7 +17,7 @@ design_space = {
     "velocity": [20, 200]
 }
 
-# --- CẤU HÌNH GIAO DIỆN STREAMLIT ---
+
 st.set_page_config(page_title="Helicopter Drag Analysis", layout="wide")
 
 st.title("🚁 Helicopter Drag Analysis Dashboard")
@@ -61,14 +59,14 @@ weight = st.sidebar.slider("Aircraft Weight (W) [N]", 5000, 50000, 30000)
 k_factor = st.sidebar.slider("Induced Drag Factor (k)", 1.1, 1.5, 1.3)
 rotor_radius = st.sidebar.slider("Rotor Radius (R) [m]", 3.5, 10.0, 5.0)
 
-# Slider cho dải vận tốc
+
 v_min, v_max = st.sidebar.select_slider(
     "Velocity Range for Analysis [m/s]",
     options=list(range(10, 251, 5)),
     value=(20, 200)
 )
 
-# Đóng gói config từ sliders
+
 user_config = {
     "rho": rho,
     "f_factor": f_factor,
@@ -78,16 +76,15 @@ user_config = {
     "velocity": [v_min, v_max]
 }
 
-# --- THỰC THI DỰ BÁO VÀ HIỂN THỊ ---
 col1, col2 = st.columns([3, 1])
 
 with col1:
     optimizer = SurrogateOptimizer(trainer, user_config)
     plot_engine = DataVisualization()
     
-    # Ở đây chúng ta gọi hàm plot. Đảm bảo plotUserConfig trả về plt.gcf()
+
     plot_engine.plotUserConfig(optimizer)
-    st.pyplot(plt.gcf()) # Lấy figure hiện tại để hiển thị lên Streamlit
+    st.pyplot(plt.gcf()) 
 
 with col2:
     st.subheader("Model Performance")
@@ -97,7 +94,7 @@ with col2:
         st.metric("MAE", f"{m['mae']:.2f} N")
         st.metric("MAPE", f"{m['mape']:.2f}%")
     
-    # Tính toán kết quả tối ưu để hiển thị dạng text
+
     v_range, theory, ai, v_opt_t, v_opt_a, d_min_t, d_min_a = optimizer.compare()
     st.subheader("Optimization Results")
     st.write(f"**Optimal Velocity (AI):** {v_opt_a:.2f} m/s")

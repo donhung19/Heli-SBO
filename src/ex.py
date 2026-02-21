@@ -185,12 +185,12 @@ def main():
     plot = DataVisualization()
 
     # Check coverage of dataset
-    # check_coverage(df)
+    check_coverage(df)
 
     # Train surrogate model 
     trainer = SurrogateModel(df)
     X_test, y_test, y_pred = trainer.train(3)
-    # plot.plotValidateModel(y_test, y_pred)
+    plot.plotValidateModel(y_test, y_pred)
 
     # User config
     user_config = {
